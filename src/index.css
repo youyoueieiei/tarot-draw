@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-zinc-950 text-zinc-100 antialiased;
+    background-image: radial-gradient(1200px 600px at 20% 10%, rgba(168, 85, 247, 0.25), transparent 60%),
+      radial-gradient(900px 500px at 80% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+      radial-gradient(900px 600px at 50% 100%, rgba(244, 114, 182, 0.12), transparent 60%);
+  }
+
+  ::selection {
+    background: rgba(168, 85, 247, 0.35);
+  }
+}
+
