@@ -1,56 +1,58 @@
 # tarot-draw
 
-Web app for drawing and laying out a full 78-card tarot deck. The interface and card blurbs are in **Traditional Chinese** (繁體中文).
+一套 78 張完整塔羅牌的網頁抽牌與排陣工具。介面與牌義說明為**繁體中文**。
 
-## Features
+[English README](./README.en.md)
 
-- **排陣抽牌 (spread mode)** — Choose a spread, tap empty slots or the deck to draw. Built-in spreads: single card, past/present/future, a four-card relationship layout, and Celtic Cross (凱爾特十字).
-- **自由牌 (free board)** — Cards go on a draggable canvas; optional fullscreen for layout. Discard pile supported.
-- **手動洗牌 (manual shuffle)** — Scroll the stacked deck, tap backs to draw, cut the pile, or use quick actions (top card, random card). Drawn cards appear in a strip below.
-- **扇形選牌 (fan picker)** — Tap the deck to fan visible cards and pick one by hand instead of automatic dealing.
-- **正逆位** — Reversals are derived from a deterministic hash of shuffle seed and draw context so runs stay reproducible for a given seed state.
-- **牌義** — Tap a drawn card to open a modal with upright / reversed meaning text (see `src/lib/interpretation.ts`).
+## 功能
 
-Shuffle resets the deck and clears drawn cards for the current mode so you can start a new session cleanly.
+- **排陣抽牌** — 選擇牌陣後，點擊空位或牌堆即可抽牌。內建牌陣：單張、過去／現在／未來、四張關係牌陣，以及凱爾特十字。
+- **自由牌** — 牌面可放在可拖曳的畫布上自由排列；支援全螢幕與棄牌區。
+- **手動洗牌** — 捲動疊起的牌堆、點擊牌背抽牌、切牌，或使用快捷操作（頂牌、隨機一張）。已抽出的牌會顯示在下方橫列。
+- **扇形選牌** — 點擊牌堆展開扇形，手動挑選一張，而非自動發牌。
+- **正逆位** — 依洗牌種子與抽牌情境的確定性雜湊決定正逆位，相同種子下結果可重現。
+- **牌義** — 點擊已抽出的牌可開啟視窗，查看正位／逆位說明（見 `src/lib/interpretation.ts`）。
 
-## Stack
+洗牌會重置牌堆並清除目前模式下的已抽牌，方便開始新一輪。
+
+## 技術棧
 
 - [React](https://react.dev/) 19 · [Vite](https://vitejs.dev/) 8 · [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/) 4 · [Framer Motion](https://www.framer.com/motion/) for transitions
+- [Tailwind CSS](https://tailwindcss.com/) 4 · [Framer Motion](https://www.framer.com/motion/)（動畫與過場）
 
-## Prerequisites
+## 環境需求
 
-- [Node.js](https://nodejs.org/) (LTS recommended; 20+ is a safe default)
+- [Node.js](https://nodejs.org/)（建議 LTS；20 以上較穩妥）
 
-## Setup and scripts
+## 安裝與指令
 
 ```bash
 npm install
 npm run dev
 ```
 
-| Command        | Description                          |
-| -------------- | ------------------------------------ |
-| `npm run dev`  | Start Vite dev server with HMR       |
-| `npm run build`| Typecheck (`tsc -b`) then production build |
-| `npm run preview` | Serve the `dist` output locally   |
-| `npm run lint` | Run ESLint on the project            |
+| 指令 | 說明 |
+| --- | --- |
+| `npm run dev` | 啟動 Vite 開發伺服器（含 HMR） |
+| `npm run build` | 先型別檢查（`tsc -b`），再建置正式版 |
+| `npm run preview` | 在本機預覽 `dist` 建置結果 |
+| `npm run lint` | 執行 ESLint |
 
-After `npm run dev`, open the URL Vite prints (usually `http://localhost:5173`).
+執行 `npm run dev` 後，在瀏覽器開啟 Vite 顯示的網址（通常為 `http://localhost:5173`）。
 
-## Project layout (high level)
+## 專案結構（概覽）
 
-- `src/App.tsx` — Modes, shuffle/draw state, spread definitions
-- `src/lib/tarot.ts` — Deck construction, card metadata, image paths
-- `src/lib/interpretation.ts` — Upright / reversed copy per card
-- `src/ui/` — Deck pile, fan picker, boards, modals, etc.
-- `CARD_IMAGE_STATUS.md` — Notes on card face assets (78 + back)
-- `scripts/normalize-cards.ps1` — Helper for card image filenames
+- `src/App.tsx` — 模式切換、洗牌／抽牌狀態、牌陣定義
+- `src/lib/tarot.ts` — 牌組建構、牌面 metadata、圖片路徑
+- `src/lib/interpretation.ts` — 各牌正位／逆位文案
+- `src/ui/` — 牌堆、扇形選牌、牌陣版面、彈窗等 UI
+- `CARD_IMAGE_STATUS.md` — 牌面圖片資產說明（78 張＋牌背）
+- `scripts/normalize-cards.ps1` — 牌面檔名整理輔助腳本
 
-## Windows note
+## Windows 說明
 
-This repo’s `package.json` includes `@rolldown/binding-win32-x64-msvc` for the Windows toolchain used here. If you develop on **macOS or Linux**, you may need to replace or remove that binding so `npm install` resolves the correct platform package for your OS.
+本專案 `package.json` 內含 `@rolldown/binding-win32-x64-msvc`，供目前使用的 Windows 工具鏈。若在 **macOS 或 Linux** 開發，可能需要改為或移除該 binding，讓 `npm install` 能解析到對應平台的套件。
 
-## License
+## 授權
 
-Private project (`"private": true` in `package.json`). Add a license file here if you intend to publish the repo.
+私人專案（`package.json` 中 `"private": true`）。若打算公開此 repo，請自行加入授權檔。
