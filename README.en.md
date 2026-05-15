@@ -55,4 +55,4 @@ This repo’s `package.json` includes `@rolldown/binding-win32-x64-msvc` for the
 
 ## License
 
-Private project (`"private": true` in `package.json`). Add a license file here if you intend to publish the repo.
+Licensed under the [MIT License](./LICENSE). Copyright © 2026 [youyoueieiei](https://github.com/youyoueieiei)

@@ -55,4 +55,4 @@ npm run dev
 
 ## 授權
 
-私人專案（`package.json` 中 `"private": true`）。若打算公開此 repo，請自行加入授權檔。
+本專案採用 [MIT License](./LICENSE) 授權。Copyright © 2026 [youyoueieiei](https://github.com/youyoueieiei)
